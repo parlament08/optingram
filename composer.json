@@ -1,0 +1,70 @@
+{
+    "name": "adr1enbe4udou1n/laravel-boilerplate",
+    "description": "Lite boilerplate site with backend based on Laravel 5.4.",
+    "keywords": ["framework", "laravel", "boilerplate", "adminlte"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.0",
+        "arcanedev/no-captcha": "^4.0",
+        "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "guzzlehttp/guzzle": "^6.2",
+        "hieu-le/active": "^3.3",
+        "intervention/image": "^2.3",
+        "intervention/imagecache": "^2.3",
+        "laravel/dusk": "^1.1",
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "^5.4",
+        "mcamara/laravel-localization": "^1.2",
+        "roumen/sitemap": "^2.6",
+        "yajra/laravel-datatables-html": "^1.1"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^2.3",
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "doctrine/dbal": "^2.5",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
